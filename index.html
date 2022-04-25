@@ -8,20 +8,44 @@
   </head>
   <body>
     <div class="container">
-      <div class="cor_preta">
-        <div class="cor_vermelha opa" id="vermelho"></div>
-        <div class="cor_amarela opa" id="amarelo"></div>
-        <div class="cor_verde opa" id="verde"></div>
+      <div class="semaforo">
+        <!--inicio div cor do fundo do semaforo-->
+        <div class="cor_preta">
+          <!--inicio div da cor vermelha do semaforo-->
+          <div class="cor_vermelha opa luzes" id="vermelho"></div>
+          <!--fim div da cor vermelha do semaforo-->
+          <!--------------------------------------->
+          <!--inicio div da cor amarela do semaforo-->
+          <div class="cor_amarela opa luzes" id="amarelo"></div>
+          <!--fim div da cor amarela do semaforo-->
+          <!--------------------------------------->
+          <!--inicio div da cor verde do semaforo-->
+          <div class="cor_verde opa luzes" id="verde"></div>
+          <!--fim div da cor verde do semaforo-->
+        </div>
+        <!--inicio da div de imagem-->
+        <img src="./assets/img/pedestre_parado_sem_cor.png" alt="" id="div_img" />
+        <!--fim da div de imagem-->
+        <!--fim div cor do fundo do semaforo-->
       </div>
-      <div class="btns">
-        <button class="btn-iniciar" onclick="iniciar()">Iniciar</button>
-        <button class="btn-manu" onclick="manutencao()">Manutenção</button>
-        <button class="btn-pede" onclick="pedestre()">Pedestre</button>
+      <!--------------------------------------->
+      <!--inicio da div dos botoes-->
+      <div class="div-btns">
+        <!--botão iniciar-->
+        <button class="btn cor-verde" onclick="iniciar()">Iniciar</button>
+        <!--botão manutenção-->
+        <button class="btn cor-vermelha" onclick="manutencao()">Manutenção</button>
+        <!--botão pedestre-->
+        <button class="btn cor-preta" onclick="pedestre()">Pedestre</button>
       </div>
+      <!--fim da div dos botoes-->
     </div>
-    <div class="img">
-      <img src="./assets/img/pedestre_parado_sem_cor.png" alt="" id="div_img" />
-    </div>
-    <script type="application/javascript" src="./assets/js/semaforo.js"></script>
+    <!--------------------------------------->
+    <!--Javascript-->
+    <script
+      type="application/javascript"
+      src="./assets/js/semaforo.js"
+    ></script>
+    <!--Javascript-->
   </body>
 </html>

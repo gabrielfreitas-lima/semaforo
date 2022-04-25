@@ -1,17 +1,20 @@
+/*importa as estilos das divs*/
 @import "./assets/css/main.css";
 
+/*tira os preenchimentos e margens automaticas*/
 *{
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
 }
 
+/*pre-define os tamanhos e cores da page*/
 html, body{
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
-    font-size: 25px;
+    font-size: 30px;
     color: white;
     font-family: sans-serif;
 }
