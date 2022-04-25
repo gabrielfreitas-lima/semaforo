@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Semaforo</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="cor_preta">
+        <div class="cor_vermelha opa" id="vermelho"></div>
+        <div class="cor_amarela opa" id="amarelo"></div>
+        <div class="cor_verde opa" id="verde"></div>
+      </div>
+      <div class="btns">
+        <button class="btn-iniciar" onclick="iniciar()">Iniciar</button>
+        <button class="btn-manu" onclick="manutencao()">Manutenção</button>
+      </div>
+    </div>
+    <div class="img">
+      <img src="./pedestre_parado_cor.png" alt="" id="div_img" />
+    </div>
+
+    <script type="application/javascript">
+      var verde = document.getElementById("verde");
+      var amarelo = document.getElementById("amarelo");
+      var vermelho = document.getElementById("vermelho");
+      var div_img = document.getElementById("div_img");
+      var flag = false;
+
+      var semaforo = {
+        // atributos
+        idInterval: undefined,
+        tempo: 1000,
+        contador: 0,
+        flag: false,
+
+        // metodos
+        semVerde: function () {
+          this.contador = 0,
+          this.idInterval = setInterval(function () {
+            div_img.src = "./pedestre_parado_cor.png";
+            verde.classList.remove("opa");
+            verde.innerHTML = semaforo.contador++;
+            if (semaforo.contador > 6) {
+              verde.innerHTML = "";
+              verde.classList.add("opa");
+              clearInterval(semaforo.idInterval);
+              semaforo.contador = semaforo.contador - 7;
+              semaforo.semAmarelo();
+              amarelo.classList.remove("opa");
+            }
+          }, semaforo.tempo);
+        },
+
+        semAmarelo: function () {
+          this.contador = 0,
+          this.idInterval = setInterval(function () {
+            verde.classList.add("opa");
+            amarelo.innerHTML = semaforo.contador++;
+            amarelo.classList.remove("opa");
+            if (semaforo.contador > 5) {
+              amarelo.innerHTML = "";
+              amarelo.classList.add("opa");
+              clearInterval(semaforo.idInterval);
+              semaforo.contador = semaforo.contador - 5;
+              semaforo.semVermelho();
+              vermelho.classList.remove("opa");
+              div_img.src = "./pedestre_andando_cor.png";
+            }
+          }, semaforo.tempo);
+        },
+
+        semVermelho: function () {
+          this.contador = 0,
+          this.idInterval = setInterval(function () {
+            vermelho.innerHTML = semaforo.contador++;
+            div_img.src = "./pedestre_andando_cor.png";
+            vermelho.classList.remove("opa");
+            if (semaforo.contador > 11) {
+              vermelho.innerHTML = "";
+              vermelho.classList.add("opa");
+              clearInterval(semaforo.idInterval);
+              semaforo.contador = semaforo.contador - 11;
+              semaforo.semVerde();
+              verde.classList.remove("opa");
+              div_img.src = "./pedestre_parado_cor.png";
+            }
+          }, semaforo.tempo);
+        },
+      };
+
+      var manuten = {
+        tempo: 500,
+        flag: false,
+        piscar: function () {
+          setInterval(function () {
+            if (!manuten.flag) {
+              amarelo.classList.remove("opa");
+              div_img.src = "./pedestre_parado_cor.png";
+              manuten.flag = true;
+            } else {
+              amarelo.classList.add("opa");
+              div_img.src = "./pedestre_parado_sem_cor.png";
+              manuten.flag = false;
+            }
+          }, manuten.tempo);
+        },
+      };
+
+      function iniciar() {
+        semaforo.semVerde();
+      };
+
+      function manutencao() {
+        manuten.piscar();
+      }
+    </script>
+  </body>
+</html>
