@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="img">
-      <img src="./pedestre_parado_cor.png" alt="" id="div_img" />
+      <img src="./assets/img/pedestre_parado_sem_cor.png" alt="" id="div_img" />
     </div>
 
     <script type="application/javascript">
@@ -40,7 +40,7 @@
         semVerde: function () {
           this.contador = 0,
           this.idInterval = setInterval(function () {
-            div_img.src = "./pedestre_parado_cor.png";
+            div_img.src = "./assets/img/pedestre_parado_cor.png";
             verde.classList.remove("opa");
             verde.innerHTML = semaforo.contador++;
             if (semaforo.contador > 6) {
@@ -67,7 +67,7 @@
               semaforo.contador = semaforo.contador - 5;
               semaforo.semVermelho();
               vermelho.classList.remove("opa");
-              div_img.src = "./pedestre_andando_cor.png";
+              div_img.src = "./assets/img/pedestre_andando_cor.png";
             }
           }, semaforo.tempo);
         },
@@ -76,7 +76,6 @@
           this.contador = 0,
           this.idInterval = setInterval(function () {
             vermelho.innerHTML = semaforo.contador++;
-            div_img.src = "./pedestre_andando_cor.png";
             vermelho.classList.remove("opa");
             if (semaforo.contador > 11) {
               vermelho.innerHTML = "";
@@ -85,24 +84,24 @@
               semaforo.contador = semaforo.contador - 11;
               semaforo.semVerde();
               verde.classList.remove("opa");
-              div_img.src = "./pedestre_parado_cor.png";
+              div_img.src = "./assets/img/pedestre_parado_cor.png";
             }
           }, semaforo.tempo);
         },
       };
 
       var manuten = {
-        tempo: 500,
+        tempo: 450,
         flag: false,
         piscar: function () {
           setInterval(function () {
             if (!manuten.flag) {
               amarelo.classList.remove("opa");
-              div_img.src = "./pedestre_parado_cor.png";
+              div_img.src = "./assets/img/pedestre_parado_cor.png";
               manuten.flag = true;
             } else {
               amarelo.classList.add("opa");
-              div_img.src = "./pedestre_parado_sem_cor.png";
+              div_img.src = "./assets/img/pedestre_parado_sem_cor.png";
               manuten.flag = false;
             }
           }, manuten.tempo);
